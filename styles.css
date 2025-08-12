@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: 'Share Tech Mono', monospace;
+    color: #00ff00;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Efecto Matrix Rain */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Título con efecto Glitch */
+.glitch-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ff0000;
+    text-shadow: 
+        2px 2px #00ff00,
+        -2px -2px #0000ff;
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #00ff00;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #0000ff;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: #000;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 
+        0 0 20px #00ff00,
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    margin: 0 auto;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px 15px;
+    border-bottom: 2px solid #00ff00;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+
+.terminal-button.red { background: #ff5f56; }
+.terminal-button.yellow { background: #ffbd2e; }
+.terminal-button.green { background: #27ca3f; }
+
+.terminal-title {
+    margin-left: 20px;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.terminal-content {
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Typing effect */
+.typing-text {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 15px;
+}
+
+.prompt {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.command {
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+/* Output styling */
+.output > div {
+    margin-bottom: 25px;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.status-icon {
+    font-size: 1.5rem;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.warning-box {
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.warning-box h2 {
+    color: #ff0000;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.critical-message {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ff0000;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.description {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.priority-list h3 {
+    color: #ff6600;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.priority-list ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.priority-list li {
+    color: #ffffff;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.priority-list li::before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
+    color: #ff6600;
+}
+
+.hacker-quote {
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.hacker-quote blockquote {
+    font-style: italic;
+    color: #00ff00;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.hacker-quote cite {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.final-warning h3 {
+    color: #ff0000;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.final-warning p {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.action-required {
+    background: rgba(255, 0, 0, 0.2);
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    animation: urgent-pulse 1.5s infinite;
+}
+
+@keyframes urgent-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px #ff0000;
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px #ff0000;
+        transform: scale(1.02);
+    }
+}
+
+.action-required h2 {
+    color: #ff0000;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 15px #ff0000;
+}
+
+.action-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.urgency {
+    font-size: 1.2rem;
+    color: #ff0000;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #00ff00;
+}
+
+.footer-text {
+    color: #00ff00;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glitch {
+        font-size: 2.5rem;
+    }
+    
+    .terminal-content {
+        padding: 15px;
+    }
+    
+    .warning-box,
+    .hacker-quote,
+    .action-required {
+        padding: 15px;
+    }
+    
+    .critical-message {
+        font-size: 1.1rem;
+    }
+    
+    .action-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Efectos adicionales */
+.terminal-window:hover {
+    box-shadow: 
+        0 0 30px #00ff00,
+        inset 0 0 30px rgba(0, 255, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
